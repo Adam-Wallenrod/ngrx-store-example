@@ -1,8 +1,9 @@
 import { Action } from '@ngrx/store';
+import {LoadAction, LoadSuccessAction} from './movie.actions';
 
 export interface Book {
   id?: number;
-  userId?: string;
+  userId?: number;
   name?: string;
 }
 
@@ -19,4 +20,6 @@ export class SetBookAction implements Action {
   constructor(public user: User) {}
 }
 
-export type actions = SetBookAction;
+
+
+export type actions = SetBookAction | LoadAction | LoadSuccessAction;
