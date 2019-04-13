@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {select, Store} from '@ngrx/store';
 import {BookState, selectMovies, selectVisibleBooks} from './book.reducer';
-import {Book} from './book.actions';
+import {Book, ResetBookAction} from './book.actions';
 import * as fromBook from './book.actions';
 import * as fromMovie from './movie.actions';
 import {Movie} from './movie.actions';
@@ -47,7 +47,7 @@ export class AppComponent implements OnInit {
   }
 
 
-  searchForBooks(userId: number) {
+  searchForBooks(userId: number): void {
     const user: fromBook.User = {
       id: userId
     };
@@ -57,18 +57,19 @@ export class AppComponent implements OnInit {
   }
 
 
-  showAllBooks() {
+  showAllBooks(): void {
     const user: fromBook.User = {
       id: null
     };
 
-    this.selectedUserId = undefined;
-    this.store.dispatch(new fromBook.SetBookAction(user));
+    this.selectedUserId = null;
+    this.store.dispatch(new fromBook.ResetBookAction(user));
     console.log('show all books is working ');
   }
 
 
-  getMovies() {
+  getMovies(): void {
+    this.selectedUserId = null;
     console.log('dispatching LoadAction!');
     this.store.dispatch(new fromMovie.LoadAction);
 

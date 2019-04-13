@@ -1,4 +1,4 @@
-import { Action } from '@ngrx/store';
+import {Action} from '@ngrx/store';
 import {LoadAction, LoadSuccessAction} from './movie.actions';
 
 export interface Book {
@@ -13,13 +13,21 @@ export interface User {
 }
 
 export const SET_BOOK = '[Book] Set Book';
+export const RESET_BOOK = '[Book] Rest Book';
 
 export class SetBookAction implements Action {
   readonly type = SET_BOOK;
 
-  constructor(public user: User) {}
+  constructor(public user: User) {
+  }
+}
+
+export class ResetBookAction implements Action {
+  readonly type = RESET_BOOK;
+
+  constructor(public user: User) {
+  }
 }
 
 
-
-export type actions = SetBookAction | LoadAction | LoadSuccessAction;
+export type actions = SetBookAction | ResetBookAction | LoadAction | LoadSuccessAction;
