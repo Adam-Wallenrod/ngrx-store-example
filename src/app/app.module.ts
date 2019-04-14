@@ -11,10 +11,11 @@ import {environment} from '../environments/environment';
 import {HttpClientModule} from '@angular/common/http';
 import {MovieEffects} from './movie.effects';
 import {MoviesService} from './movie.servie';
+import { MyObservableComponent } from './my-observable/my-observable.component';
 
 
 @NgModule({
-  declarations: [AppComponent, MyCounterComponent],
+  declarations: [AppComponent, MyCounterComponent, MyObservableComponent],
   imports: [
     BrowserModule,
     StoreModule.forRoot(appReducers),
