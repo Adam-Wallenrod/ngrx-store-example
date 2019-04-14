@@ -12,10 +12,11 @@ import {HttpClientModule} from '@angular/common/http';
 import {MovieEffects} from './movie.effects';
 import {MoviesService} from './movie.servie';
 import { MyObservableComponent } from './my-observable/my-observable.component';
+import { MyCallbacksComponent } from './my-callbacks/my-callbacks.component';
 
 
 @NgModule({
-  declarations: [AppComponent, MyCounterComponent, MyObservableComponent],
+  declarations: [AppComponent, MyCounterComponent, MyObservableComponent, MyCallbacksComponent],
   imports: [
     BrowserModule,
     StoreModule.forRoot(appReducers),
