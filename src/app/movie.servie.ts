@@ -19,4 +19,10 @@ export class MoviesService {
     const films = this.http.get('https://swapi.co/api/films/');
     return films;
   }
+
+
+  getShips() {
+    const ships = this.http.get('https://swapi.co/api/starships');
+    return ships;
+  }
 }

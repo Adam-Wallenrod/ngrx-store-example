@@ -1,0 +1,16 @@
+<h2>First 10 Starships from API</h2>
+<table>
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+
+  </tr>
+  </thead>
+  <tbody *ngIf="ships">
+  <tr *ngFor="let ship of ships">
+    <td style="width:30%">{{ship['id']}}</td>
+    <td style="width:70%"><a routerLink="{{ship['id']}}/detail">{{ship['name']}}</a></td>
+  </tr>
+  </tbody>
+</table>

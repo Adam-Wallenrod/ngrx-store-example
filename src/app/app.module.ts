@@ -13,10 +13,20 @@ import {MovieEffects} from './movie.effects';
 import {MoviesService} from './movie.servie';
 import { MyObservableComponent } from './my-observable/my-observable.component';
 import { MyCallbacksComponent } from './my-callbacks/my-callbacks.component';
+import {RouterStateSerializer, StoreRouterConnectingModule} from '@ngrx/router-store';
+import {CustomSerializer} from './index';
+import { ShipListComponent } from './ship-list/ship-list.component';
+import { RouterModule, Routes } from '@angular/router';
+import { ShipDetailComponent } from './ship-detail/ship-detail.component';
+
+
+const appRoutes: Routes = [
+  {path: ':shipId/detail', component: ShipDetailComponent }
+];
 
 
 @NgModule({
-  declarations: [AppComponent, MyCounterComponent, MyObservableComponent, MyCallbacksComponent],
+  declarations: [AppComponent, MyCounterComponent, MyObservableComponent, MyCallbacksComponent, ShipListComponent, ShipDetailComponent],
   imports: [
     BrowserModule,
     StoreModule.forRoot(appReducers),
@@ -25,10 +35,12 @@ import { MyCallbacksComponent } from './my-callbacks/my-callbacks.component';
       maxAge: 25,
       logOnly: environment.production
     }),
+    RouterModule.forRoot(appRoutes),
+    StoreRouterConnectingModule,
     FormsModule,
     HttpClientModule
   ],
-  providers: [MoviesService],
+  providers: [MoviesService, {provide: RouterStateSerializer, useClass: CustomSerializer}],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
